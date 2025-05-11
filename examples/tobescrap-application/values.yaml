@@ -1,0 +1,17 @@
+promtail:
+  enabled: true
+  config:
+    server:
+      port: 9080
+    client:
+      url: "http://loki.monitoring.svc:3100/loki/api/v1/push"
+    positions:
+      filename: /var/promtail/positions.yaml
+    scrape_configs:
+      - job_name: 'application-b-logs'
+        static_configs:
+          - targets:
+              - localhost
+            labels:
+              job: "application-b"
+              __path__: /var/log/application-b/*.log
