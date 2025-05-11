@@ -1,0 +1,3 @@
+manage to setup the set 
+grafana,promethues,loki,promtail
+then what is the next. the other application should i allow me to gather log / metrics so how ? 

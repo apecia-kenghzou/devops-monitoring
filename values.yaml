@@ -1,0 +1,30 @@
+image:
+  repository: grafana/promtail
+  tag: 2.9.3
+  pullPolicy: IfNotPresent
+
+prometheus:
+  image: prom/prometheus:latest
+  port: 9090
+
+grafana:
+  image: grafana/grafana:latest
+  port: 3000
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    ingressClassName: nginx
+    hosts:
+      - grafana.localdev.me
+    paths:
+      - /
+    pathType: Prefix
+
+loki:
+  image: grafana/loki:2.9.1
+  port: 3100
+
+promtail:
+  image: grafana/promtail:2.9.1
+  port: 9080
